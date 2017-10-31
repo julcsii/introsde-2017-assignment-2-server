@@ -1,2 +1,17 @@
 # introsde-2017-assignment-2-server
-Second assignment for Introduction to Service Design Engineering course. RESTful server implementation.
+University of Trento
+
+Introduction of Service Design Engineering 
+
+2017 Fall
+
+#### Name: Julia Hermann
+#### Email: julia.hermann@studenti.unitn.it
+
+#### Task
+*************
+
+#### Code execution
+******************
+
+#### Notes
