@@ -16,9 +16,9 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
 
 import rest.dao.UniversityDao;
 
@@ -29,7 +29,7 @@ import rest.dao.UniversityDao;
 @Entity
 @Table(name = "Activity")
 @NamedQuery(name = "Activity.findAll", query = "SELECT a FROM Activity a")
-@XmlRootElement(name="preferences")
+@XmlRootElement(name="activity")
 public class Activity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -48,7 +48,7 @@ public class Activity implements Serializable {
 	private String place;
 	
 	@Column(name = "type")
-	private String type;
+	private ActivityType type;
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name="startdate")
@@ -61,6 +61,17 @@ public class Activity implements Serializable {
 	public Activity() {
 	}
 	
+	
+	public Activity(String name, String description, String place, ActivityType type, Date startdate) {
+		super();
+		this.name = name;
+		this.description = description;
+		this.place = place;
+		this.type = type;
+		this.startdate = startdate;
+	}
+
+
 	public int getIdActivity() {
 		return idActivity;
 	}
@@ -93,11 +104,11 @@ public class Activity implements Serializable {
 		this.place = place;
 	}
 
-	public String getType() {
+	public ActivityType getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(ActivityType type) {
 		this.type = type;
 	}
 

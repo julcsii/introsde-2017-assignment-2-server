@@ -13,5 +13,10 @@ Introduction of Service Design Engineering
 
 #### Code execution
 ******************
+Create new Dynamic Web Project, Add Ivy Library, set up like settings.png
+
+Persistence.xml change to MySQLDB (upload to github)
+
+Add fgure of data model, xmls
 
 #### Notes

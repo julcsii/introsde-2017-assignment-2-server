@@ -17,8 +17,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlList;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
 
 import rest.dao.UniversityDao;
 
@@ -29,7 +34,7 @@ import rest.dao.UniversityDao;
 @Entity
 @Table(name="\"Person\"")
 @NamedQuery(name="Person.findAll", query="SELECT p FROM Person p")
-@XmlRootElement(name="people")
+@XmlRootElement(name="person")
 public class Person implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -46,12 +51,24 @@ public class Person implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@Column(name="birthdate")
 	private Date birthdate;
-
+	
+	
 	@OneToMany(mappedBy="person",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
-	private List<Activity> activityPreferences;
+	@XmlElementWrapper(name="preferences")
+	private List<Activity> activitypreference;
 	
 	public Person() {
 	}
+	
+
+	public Person(String firstname, String lastname, Date birthdate, List<Activity> activitypreference) {
+		super();
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.birthdate = birthdate;
+		this.activitypreference = activitypreference;
+	}
+
 
 	public Date getBirthdate() {
 		return this.birthdate;
@@ -85,13 +102,13 @@ public class Person implements Serializable {
 		this.firstname = firstname;
 	}
 
-	@XmlElementWrapper(name = "activitypreference")
+	@XmlTransient
 	public List<Activity> getActivityPreferences() {
-	    return activityPreferences;
+	    return activitypreference;
 	}
 
 	public void setActivityPreferences(List<Activity> activities) {
-	    this.activityPreferences = activities;
+	    this.activitypreference = activities;
 	}
 	
 	public static Person getPersonById(int personId) {
