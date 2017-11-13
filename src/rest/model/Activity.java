@@ -157,22 +157,22 @@ public class Activity implements Serializable {
 	    return p;
 	}
 	
-	public static Activity updateActivity(Activity p) {
+	public static Activity updateActivity(Activity a) {
 		EntityManager em = UniversityDao.instance.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		p=em.merge(p);
+		a=em.merge(a);
 		tx.commit();
 		UniversityDao.instance.closeConnections(em);
-	    return p;
+	    return a;
 	}
 	
-	public static void removeActivity(Activity p) {
+	public static void removeActivity(Activity a) {
 		EntityManager em = UniversityDao.instance.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-	    p=em.merge(p);
-	    em.remove(p);
+	    a=em.merge(a);
+	    em.remove(a);
 	    tx.commit();
 	    UniversityDao.instance.closeConnections(em);
 	}

@@ -1,8 +1,10 @@
 package rest.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.function.Predicate;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -106,7 +108,20 @@ public class Person implements Serializable {
 	public List<Activity> getActivityPreferences() {
 	    return activitypreference;
 	}
+	
 
+	public List<Activity> getActivitiesWithType(ActivityType type) {
+	    List<Activity> activities = getActivityPreferences();
+	    List<Activity> activitiesWithType = new ArrayList<>();
+	    
+	    for (Activity activity : activities) {
+	    	if (activity.getType().equals(type)) {
+	    		activitiesWithType.add(activity);
+	    	}
+	    }
+	    return activitiesWithType;
+	}
+	
 	public void setActivityPreferences(List<Activity> activities) {
 	    this.activitypreference = activities;
 	}
@@ -156,6 +171,53 @@ public class Person implements Serializable {
 	    em.remove(p);
 	    tx.commit();
 	    UniversityDao.instance.closeConnections(em);
+	}
+
+
+	public List<Activity> getActivitiesWithTypeAndId(ActivityType type, int activityId) {
+		List<Activity> activities = getActivityPreferences();
+	    List<Activity> activitiesWithTypeAndId = new ArrayList<>();
+	    
+	    for (Activity activity : activities) {
+	    	if (activity.getType().equals(type) && activity.getIdActivity()==activityId) {
+	    		activitiesWithTypeAndId.add(activity);
+	    	}
+	    }
+	    return activitiesWithTypeAndId;
+	}
+
+	
+	public Activity addActivityWithType(ActivityType type, Activity activity) {
+		EntityManager em = UniversityDao.instance.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		List<Activity> origActivities = this.getActivityPreferences();
+		activity.setType(type);
+		origActivities.add(activity);
+		this.setActivityPreferences(origActivities);
+		em.merge(this);
+		tx.commit();
+	    UniversityDao.instance.closeConnections(em);
+		return activity;
+		
+	}
+
+
+	public List<Activity> getActivitiesWithWithinRange(ActivityType type, Date beforeDate, Date afterDate) {
+		List<Activity> activitiesWithType = this.getActivitiesWithType(type);
+		System.out.println(activitiesWithType);
+		
+		for (Activity activity : activitiesWithType) {
+			System.out.println(activity.getStartdate().before(beforeDate));
+			if (activity.getStartdate().before(afterDate) || activity.getStartdate().after(beforeDate)) {
+				activitiesWithType.remove(activity);
+				System.out.println("Dropped from list:" + activity);
+			} else{
+				System.out.println("Kept in list:" + activity);
+			}
+		}
+		return activitiesWithType; 	
+		
 	}
 }
 

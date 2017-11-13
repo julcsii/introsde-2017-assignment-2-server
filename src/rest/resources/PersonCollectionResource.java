@@ -32,7 +32,7 @@ public class PersonCollectionResource {
 	@Context
 	Request request;
 
-	// Return the list of people to the user in the browser
+	//Request#1
 	@GET
 	@Produces({MediaType.TEXT_XML, MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 	public List<Person> getPersonsList() {
@@ -42,7 +42,8 @@ public class PersonCollectionResource {
 		List<Person> people =Person.getAll();
 		return people;
 	}
-
+	
+	//Request#4
 	@POST  
 	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON}) // will be called when content-type header set to xml
 	@Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})

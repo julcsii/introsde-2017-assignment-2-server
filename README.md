@@ -19,4 +19,8 @@ Persistence.xml change to MySQLDB (upload to github)
 
 Add fgure of data model, xmls
 
+Request#7: Types are SPORT....
+Request#8: redundant..
+Request#10:redundant
+
 #### Notes

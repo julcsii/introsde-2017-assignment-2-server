@@ -10,7 +10,7 @@ import rest.model.ActivityType;
 import rest.model.Person;
 
 public class DatabaseInit {
-	
+	//Request#0
 	public static List<Activity> createActivities(){
 		List<Activity> activities = new ArrayList<Activity>();
 		Activity a1 = new Activity("Running", "Running on the track", "Trento", ActivityType.SPORT, new Date());
@@ -79,7 +79,7 @@ public class DatabaseInit {
 	
 	
 	
-	public static void main(String[] args) {
+	public static void init() {
 		for (int i=0; i<5; i++) {
 			Person.savePerson(createFivePeople().get(i));
 		}

@@ -124,7 +124,7 @@
 	</target>
 	
 	<!-- CHANGE THIS PROPERTY TO THE CORRECT PLACE OF THE APACHE TOMCAT HOME --> 
-	<property name="apache.dir" value="var/lib/tomcat8/" />	
+	<property name="apache.dir" value="/var/lib/tomcat8/" />	
 	<target name="apache.deploy.war" depends="create.war">
 		<copy file="${web.dir}/assignment-02-server.war"
 	    	toDir="${apache.dir}/webapps"
