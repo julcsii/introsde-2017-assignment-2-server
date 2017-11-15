@@ -79,11 +79,20 @@ public class DatabaseInit {
 	
 	
 	
-	public static void init() {
+	public static List<Person> init() {
+		List<Person> people = new ArrayList<>();
+		Person person;
 		for (int i=0; i<5; i++) {
-			Person.savePerson(createFivePeople().get(i));
+			person = Person.savePerson(createFivePeople().get(i));
+			people.add(person);
 		}
+		return people;
+
 		
+	}
+	
+	public static void main(String[] args) {
+		init();
 	}
 	
 }
