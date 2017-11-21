@@ -14,7 +14,7 @@
 			<property name="javax.persistence.jdbc.driver" value="org.sqlite.JDBC" />
 			<!-- the last part of the url is the path to the sqlite file of the db, 
 				in this case it should be on the root folder of the project -->
-			<property name="javax.persistence.jdbc.url" value="jdbc:sqlite:/home/julcsi//Documents/Unitn/Intro to SDE/Lab/introsde-2017-assignment-2/introsde-2017-assignment-2-server/MySQLiteDB" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:sqlite:MySQLiteDB.sqlite" />
 			<!-- set it to ALL to see all the JPA related debugging information -->
 			<property name="eclipselink.logging.level" value="INFO" />
 			<!-- we will use this to automatically add elements to our database if 
