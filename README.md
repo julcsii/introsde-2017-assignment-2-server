@@ -22,16 +22,27 @@ SQLite database is used via JDBC driver and EclipseLink JPA implementation. The 
 The Jersey server implements the following RESTful web-services:
 
 Request#0: GET /database_init: an initialization process at deployment
+
 Request#1: GET /person: lists all the people
+
 Request#2: GET /person/{idPerson}: gives all the personal information plus related information
+
 Request#3: PUT /person/{idPerson}: updates the personal information of the person identified by {idPerson} - every attribute of the person has to be given to the request, otherwise information will be lost
+
 Request#4: POST /person: creates a new person and return the newly created person with its assigned id
+
 Request#5: DELETE /person/{idPerson}: deletes the person identified by {id} from the system
+
 Request#6: GET /activity_types: returns the list of activity_types
+
 Request#7: GET /person/{idPerson}/{activity_type}: returns the list of activities of {activity_type} (e.g. Social) for person identified by {idPerson}
+
 Request#8: GET /person/{idPerson}/{activity_type}/{idActivity}: returns the activities of {activity_type} (e.g. Social) identified by {idActivity} for person identified by {idPerson}
+
 Request#9: POST /person/{idPerson}/{activity_type}: saves a new value for the {activity_type} (e.g. Social) of person identified by {idPerson}
+
 Request#10 (Extra #1): PUT /person/{idPerson}/{activity_type}/{idActivity}: updates the value for the {activity_type} (e.g., Social) identified by {idActivity}, related to the person identified by {idPerson} -  - every attribute of the person has to be given to the request, otherwise information will be lost
+
 Request#11 (Extra #2): GET /person/{idPerson}/{activity_type}?before={beforeDate}&after={afterDate}: returns the activities of {activity_type} (e.g., Social) for person {idPerson} which {start_date} is in the specified range of date (Date format should be: "yyyy-MM-dd'T'HH:mm:ss")
 
 
