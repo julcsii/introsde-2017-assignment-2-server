@@ -19,6 +19,9 @@ import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import rest.dao.UniversityDao;
 
@@ -52,6 +55,7 @@ public class Activity implements Serializable {
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name="startdate")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
 	private Date startdate;
 	
 	@ManyToOne

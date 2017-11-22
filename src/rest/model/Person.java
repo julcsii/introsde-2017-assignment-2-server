@@ -26,6 +26,9 @@ import javax.xml.bind.annotation.XmlList;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import rest.dao.UniversityDao;
 
@@ -52,6 +55,7 @@ public class Person implements Serializable {
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="birthdate")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
 	private Date birthdate;
 	
 	
