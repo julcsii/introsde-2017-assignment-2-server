@@ -48,11 +48,12 @@ Request#11 (Extra #2): GET /person/{idPerson}/{activity_type}?before={beforeDate
 
 #### Code execution locally with Eclipse
 1. Clone repository
-2. Create new Dynamic Web Project referring the location where you put the source code
-3. Add Ivy Library
-4. Compile with build.xml
-5. Run App.java
-(6. To fill database, run DatabaseInit.java or send GET /database_init request)
+2. Create new Dynamic Web Project referring the location where you put the source code (select generating web.xml)
+3. Configure JPA properties (Eclipselink, add connection with SQLite JDBC driver)
+4. Add Ivy Library
+5. Compile with build.xml
+6. Run App.java
+(7. To fill database, run DatabaseInit.java or send GET /database_init request)
 
 
 #### Notes
